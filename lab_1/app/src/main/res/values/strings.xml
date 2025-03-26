@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="text_edit_hint">Введіть назву квітів</string>
+    <string name="text_view_1">Оберіть колір</string>
+    <string name="text_view_2">Оберіть ціновий діапазон</string>
+    <string name="colour_1">Червоний</string>
+    <string name="colour_2">Білий</string>
+    <string name="colour_3">Фіолетовий</string>
+    <string name="pricerange_1">100-750 грн</string>
+    <string name="pricerange_2">750-1500 грн</string>
+    <string name="pricerange_3">1500+ грн</string>
+    <string name="ok_button">OK</string>
+    <string name="error">Будь-ласка, заповніть всі поля</string>
+</resources>
