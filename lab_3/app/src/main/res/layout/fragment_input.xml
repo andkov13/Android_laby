@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/flowerNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:ems="10"
+        android:hint="@string/text_edit_hint"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_view_1" />
+
+    <RadioGroup
+        android:id="@+id/colorGroup"
+        android:layout_width="match_parent"
+        android:layout_height="158dp">
+
+        <RadioButton
+            android:id="@+id/colorRed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/colour_1" />
+
+        <RadioButton
+            android:id="@+id/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/colour_2" />
+
+        <RadioButton
+            android:id="@+id/colorViolet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/colour_3" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_view_2" />
+
+    <RadioGroup
+        android:id="@+id/priceGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/priceLow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pricerange_1" />
+
+        <RadioButton
+            android:id="@+id/priceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pricerange_2" />
+
+        <RadioButton
+            android:id="@+id/priceHigh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pricerange_3" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/okButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ok_button" />
+
+        <Button
+            android:id="@+id/openButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/open_orders_button" />
+    </LinearLayout>
+</LinearLayout>
