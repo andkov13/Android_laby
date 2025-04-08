@@ -16,6 +16,7 @@ public class InputFragment extends Fragment {
     private EditText flowerNameInput;
     private RadioGroup colorGroup;
     private RadioGroup priceGroup;
+    private Button orderButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,7 +26,7 @@ public class InputFragment extends Fragment {
         flowerNameInput = view.findViewById(R.id.flowerNameInput);
         colorGroup = view.findViewById(R.id.colorGroup);
         priceGroup = view.findViewById(R.id.priceGroup);
-        Button orderButton = view.findViewById(R.id.okButton);
+        orderButton = view.findViewById(R.id.okButton);
         Button openButton = view.findViewById(R.id.openButton);
 
         orderButton.setOnClickListener(v -> processOrder());
@@ -54,6 +55,8 @@ public class InputFragment extends Fragment {
                     selectedPrice.getText().toString()
             );
         }
+
+        orderButton.setText(R.string.ok_button_update);
     }
 
     private void openDatabase() {
@@ -67,6 +70,7 @@ public class InputFragment extends Fragment {
             flowerNameInput.setText("");
             colorGroup.clearCheck();
             priceGroup.clearCheck();
+            orderButton.setText(R.string.ok_button);
         }
     }
 }

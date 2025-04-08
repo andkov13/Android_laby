@@ -30,7 +30,7 @@ public class DatabaseActivity extends AppCompatActivity {
         StringBuilder content = new StringBuilder();
 
         if (orders.isEmpty()) {
-            content.append("Сховище пусте. Немає збережених замовлень.");
+            content.append("Збережених замовлень немає.");
         } else {
             content.append("Кількість замовлень: ").append(orders.size()).append("\n\n");
             for (Order order : orders) {

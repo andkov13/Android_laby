@@ -13,6 +13,7 @@ public class ResultFragment extends Fragment {
 
     private TextView resultText;
     private Button cancelButton;
+    private Button newOrderButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -21,23 +22,23 @@ public class ResultFragment extends Fragment {
 
         resultText = view.findViewById(R.id.resultText);
         cancelButton = view.findViewById(R.id.cancelButton);
+        newOrderButton= view.findViewById(R.id.newOrderButton);
 
         cancelButton.setOnClickListener(v -> clearResult());
+        newOrderButton.setOnClickListener(v -> newOrder());
 
-        cancelButton.setVisibility(View.GONE);
-        resultText.setVisibility(View.GONE);
+        controlView(false);
 
         return view;
     }
 
     public void updateResult(String flowerName, String color, String price) {
-        String result = "Деталі замовлення:" + "\nКвітка: " + flowerName +
+        String result = "Деталі поточного замовлення:" + "\nКвітка: " + flowerName +
                 "\nКолір: " + color +
                 "\nЦіна: " + price;
         resultText.setText(result);
 
-        cancelButton.setVisibility(View.VISIBLE);
-        resultText.setVisibility(View.VISIBLE);
+        controlView(true);
     }
 
     public void showMessage(String message) {
@@ -45,11 +46,32 @@ public class ResultFragment extends Fragment {
     }
 
     private void clearResult() {
-        cancelButton.setVisibility(View.GONE);
-        resultText.setVisibility(View.GONE);
+        controlView(false);
+
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).deleteCurrentOrder();
+            ((MainActivity) getActivity()).clearInputFields();
+        }
+    }
+
+    private void newOrder(){
+        controlView(false);
 
         if (getActivity() instanceof MainActivity) {
             ((MainActivity) getActivity()).clearInputFields();
+        }
+    }
+
+    private void controlView(boolean desiredState){
+        if (desiredState){
+            cancelButton.setVisibility(View.VISIBLE);
+            resultText.setVisibility(View.VISIBLE);
+            newOrderButton.setVisibility(View.VISIBLE);
+        }
+        else{
+            cancelButton.setVisibility(View.GONE);
+            resultText.setVisibility(View.GONE);
+            newOrderButton.setVisibility(View.GONE);
         }
     }
 }
