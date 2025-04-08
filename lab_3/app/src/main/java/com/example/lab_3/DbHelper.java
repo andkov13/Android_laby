@@ -11,7 +11,7 @@ import java.util.List;
 public class DbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "flowerOrders.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String TABLE_ORDERS = "orders";
     private static final String COLUMN_ID = "id";
@@ -73,7 +73,7 @@ public class DbHelper extends SQLiteOpenHelper {
         return orderList;
     }
 
-    public int updateOrder(Order order) {
+    public int updateOrder(Order order, int id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -81,8 +81,9 @@ public class DbHelper extends SQLiteOpenHelper {
         values.put(COLUMN_COLOR, order.getColor());
         values.put(COLUMN_PRICE, order.getPrice());
 
-        return db.update(TABLE_ORDERS, values, COLUMN_ID + " = ?",
-                new String[]{String.valueOf(order.getId())});
+        db.update(TABLE_ORDERS, values, COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)});
+        return id;
     }
 
     public int deleteOrder(int id) {

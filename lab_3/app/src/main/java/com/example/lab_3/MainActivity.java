@@ -9,7 +9,7 @@ public class MainActivity extends AppCompatActivity {
     private InputFragment inputFragment;
     private ResultFragment resultFragment;
     private DbHelper dbHelper;
-    private long lastId;
+    private Order currentOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,23 +33,44 @@ public class MainActivity extends AppCompatActivity {
         if (resultFragment != null) {
             resultFragment.updateResult(flowerName, color, price);
 
-            // Додаємо запис до бази даних
-            long id = dbHelper.addOrder(flowerName, color, price);
-            lastId = id;
-            if (id != -1) {
-                resultFragment.showMessage("Замовлення збережено (ID: " + id + ")");
-            } else {
-                resultFragment.showMessage("Помилка збереження замовлення");
+            if (currentOrder == null){
+                currentOrder = new Order(flowerName, color, price);
+                long id = dbHelper.addOrder(flowerName, color, price);
+                if (id != -1) {
+                    currentOrder.setId((int)id);
+                    resultFragment.showMessage("Замовлення збережено (ID: " + id + ")");
+                } else {
+                    resultFragment.showMessage("Помилка збереження замовлення");
+                }
             }
+
+            else{
+                Order changedOrder = new Order(flowerName, color, price);
+                int currentOrderId = currentOrder.getId();
+                long id = dbHelper.updateOrder(changedOrder, currentOrderId);
+                if (id != -1) {
+                    resultFragment.showMessage("Замовлення змінено (ID: " + id + ")");
+                } else {
+                    resultFragment.showMessage("Помилка зміни замовлення");
+                }
+            }
+
+        }
+    }
+
+    public void deleteCurrentOrder() {
+        if (currentOrder != null && currentOrder.getId() > 0) {
+            int deleted_id = dbHelper.deleteOrder(currentOrder.getId());
+            currentOrder = null;
+            resultFragment.showMessage("Замовлення видалено (ID: " + deleted_id + ")");
         }
     }
 
     public void clearInputFields() {
         if (inputFragment != null) {
             inputFragment.clearForm();
+            currentOrder = null;
         }
-        int deleted_id = dbHelper.deleteOrder((int)lastId);
-        resultFragment.showMessage("Замовлення видалено (ID: " + deleted_id + ")");
     }
 
     public void openDatabaseView() {

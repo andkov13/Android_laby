@@ -10,10 +10,12 @@
     <string name="pricerange_2">750-1500 грн</string>
     <string name="pricerange_3">1500+ грн</string>
     <string name="ok_button">Створити замовлення</string>
+    <string name="ok_button_update">Оновити замовлення</string>
     <string name="open_orders_button">Переглянути всі замовлення</string>
     <string name="error">Будь-ласка, заповніть всі поля</string>
     <string name="db_insertion_error">Помилка додавання замовлення в базу даних</string>
     <string name="db_insertion_success">Замовлення додане в базу даних</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="cancel_button">Видалити замовлення</string>
     <string name="back_button">Назад</string>
+    <string name="new_order_button">Створити нове замовлення</string>
 </resources>
