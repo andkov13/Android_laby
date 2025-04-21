@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Smth</string>
+    <string name="app_name">Video Player</string>
     <string name="file_button">Вибрати файл</string>
     <string name="stream_button">Програти файл з Інтернету</string>
     <string name="url_input_hint">Введіть URL</string>
